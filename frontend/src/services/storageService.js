@@ -1,0 +1,13 @@
+export const storage = {
+  get(key, fallback) {
+    try {
+      const value = localStorage.getItem(`pawcare:${key}`);
+      return value ? JSON.parse(value) : fallback;
+    } catch {
+      return fallback;
+    }
+  },
+  set(key, value) {
+    localStorage.setItem(`pawcare:${key}`, JSON.stringify(value));
+  },
+};
